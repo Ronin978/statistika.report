@@ -11,8 +11,9 @@
 |
 */
 
-Route::get('/', 'FrontController@index');
+Route::resource('/', 'FrontController');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/QuickFind', 'FrontController@QuickFind');

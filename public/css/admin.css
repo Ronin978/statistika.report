@@ -1,0 +1,18 @@
+.mytable {
+	text-align: center;
+	vertical-align: center;
+}
+
+.mytable td  {
+	border: 1px solid #000;
+	padding: 1px !important;
+}
+
+.mytable input {
+	width: 7em;
+}
+
+.firstColumn {
+	text-align: left;
+	
+}
