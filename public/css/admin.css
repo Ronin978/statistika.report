@@ -1,6 +1,7 @@
 .mytable {
 	text-align: center;
-	vertical-align: center;
+	margin: 1px;
+	width: 700px;
 }
 
 .mytable td  {
@@ -12,7 +13,10 @@
 	width: 7em;
 }
 
+#myTable input{
+	width: 5em;
+}
+
 .firstColumn {
-	text-align: left;
-	
+	text-align: left;	
 }

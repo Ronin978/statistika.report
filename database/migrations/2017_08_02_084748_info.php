@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TotalReport extends Migration
+class Info extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class TotalReport extends Migration
      */
     public function up()
     {
-        Schema::create('total_reports', function (Blueprint $table) 
+        Schema::create('info', function (Blueprint $table) 
         {
          $table->increments('id');
-         $table->date('date');                  
-         $table->integer('type');         
-         $table->integer('day');
-         $table->integer('night');
-         $table->string('chergovy');
+         $table->date('date'); 
+         $table->string('title');
+         $table->string('value');
          $table->timestamps();
          
         });
@@ -33,6 +31,6 @@ class TotalReport extends Migration
      */
     public function down()
     {
-        Schema::drop('total_reports');
+        //
     }
 }

@@ -27,8 +27,7 @@
     	<div id="home" class="main_box">
         	<div class="col col_23">
             	<img src="images/templatemo_image_01.jpg" alt="image" class="img_frame" />
-                РАПОРТ старших лікарів змін Матушевської Н.І., Костюк В.С.  за чергування 
-                {{Дата рапорту ####}}.
+                РАПОРТ старших лікарів змін Матушевської Н.І., Костюк В.С.  за чергування Дата рапорту.
 
                 <table class="table mytable">
                     <tr>

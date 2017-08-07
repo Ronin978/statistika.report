@@ -27,9 +27,27 @@
     <script type='text/javascript' src='{{ asset('js/jquery.localscroll-min.js') }}'></script>
     <script type="text/javascript">
         $(document).ready(function () {
-        $.localScroll();
+            $.localScroll();
         });
+
+        window.onload=function(){
+            var leng=document.getElementsByClassName('two').length;
+
+            document.getElementById('extr').setAttribute("name", 'value'+leng);
+            document.getElementById('noext').setAttribute("name", 'value'+(leng+1));
+        }
     </script> 
+
+    <script type="text/javascript">
+        function oninputt(key) {            
+            var intro = parseFloat( document.getElementById('intro'+key).value );
+            var prihod = parseFloat( document.getElementById('prihod'+key).value );
+            var vykor = parseFloat( document.getElementById('vykor'+key).value );
+            document.getElementById('result'+key).value = all+prihod-vykor;
+        }
+    </script>
+
+    
 </head>
 <body>
     <div id="app">
