@@ -33,10 +33,10 @@
                                         {{$type}}
                                     </td>
                                     <td>
-                                        <input type="text" name="day{{$key}}" oninput="oninputt('<?php echo $key ?>');">
+                                        <input type="text" name="day{{$key}}" oninput="oninputt('{{$key}}');">
                                     </td>
                                     <td>
-                                        <input type="text" name="night{{$key}}" oninput="oninputt('<?php echo $key ?>');">
+                                        <input type="text" name="night{{$key}}" oninput="oninputt('{{$key}}');">
                                     </td>
                                     <td></td>
                                 </tr>
@@ -49,7 +49,7 @@
                             @foreach ($sections as $key => $sect)
                                 
                                 <td>{{$sect}}<br>
-                                    <input type="text" id="value{{$key}}" class="two" name="value{{$key}}" value="{{$key+1}}">
+                                    <input type="text" id="value{{$key+1}}" class="two" name="value{{$key+1}}" value="{{$key+1}}">
                                 </td>
                                 @if ( ($key+1) % 7 == 0)
                                     </tr>
@@ -69,21 +69,21 @@
                                 <td>ЕКГ (заг. к-сть)</td>
                             </tr>
                             <tr>
-                                @for ($i=$key+1; $i <= 32; $i++)
+                                @for ($i=$key+2; $i <= 33; $i++)
                                     <td>
-                                        <input type="text" id="value{{$i}}" class="two" name="value{{$i}}" value="{{$i+1}}">
+                                        <input type="text" id="value{{$i}}" class="two" name="value{{$i}}" value="{{$i}}">
                                     </td>
                                 @endfor
                             </tr>
                         </table>
 
-                        Невідкладна допомога (ПМСД)  22+2=24
+                        <p>Невідкладна допомога (ПМСД)   <span id="pmcd0">0</span> + <span id="pmcd1">0</span></p>
                         <table class="table mytable">
                             <tr>
                                 @foreach ($region as $key => $reg)
                                     
                                     <td>{{$reg}}<br>
-                                        <input type="text" id="value{{$key+33}}" name="value{{$key+33}}" class="two" value="{{$key+34}}">
+                                        <input type="text" id="value{{$key+34}}" name="value{{$key+34}}" class="two" value="1+2" oninput = "oninput2()">
                                     </td>
                                     @if ( ($key+1) % 9 == 0)
                                         </tr>
@@ -96,8 +96,10 @@
                     
                         <input type="hidden" name="_token" value="{{csrf_token()}}"/>
 
-                        <input type="submit" value="Save">
+                        <br>
                     </div>
+
+                    <input type="submit" value="Save">
                 
                 </div> 
                     <a href="#templatemo_header" class="gototop">Go To Top</a>
@@ -113,6 +115,8 @@
             Copyright © 2048 Your Company Name<br /> Designed by <a href="http://www.templatemo.com" target="_parent">Free CSS Templates</a>
         </div> 
     </form>
+
+
 </div>
 
 @endsection

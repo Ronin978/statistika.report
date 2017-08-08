@@ -33,18 +33,54 @@
         window.onload=function(){
             var leng=document.getElementsByClassName('two').length;
 
-            document.getElementById('extr').setAttribute("name", 'value'+leng);
-            document.getElementById('noext').setAttribute("name", 'value'+(leng+1));
+            document.getElementById('extr').setAttribute("name", 'value'+(leng+1));
+            document.getElementById('noext').setAttribute("name", 'value'+(leng+2));
         }
     </script> 
 
     <script type="text/javascript">
-        function oninputt(key) {            
+        function oninputt(key){            
             var intro = parseFloat( document.getElementById('intro'+key).value );
             var prihod = parseFloat( document.getElementById('prihod'+key).value );
             var vykor = parseFloat( document.getElementById('vykor'+key).value );
             document.getElementById('result'+key).value = all+prihod-vykor;
         }
+        
+        function oninput2()
+        {
+            var mass0 = [];
+            var mass1 = [];
+            var first = 0;
+            var two = 0;
+            for (var i = 34; i <= 51; i++) {
+                var example = document.getElementById('value'+i).value.split('+');
+                
+                
+                if (example[0]!=='') {
+                    first = example[0];
+                }
+                
+                if (example[1]!=='') {
+                    two = example[1];
+                }
+
+                mass0[mass0.length] = first;
+                mass1[mass1.length] = two;
+            }
+            
+            var sum0 = 0;
+            var sum1 = 0;
+
+            for(var i = 0; i < mass0.length; i++){
+                sum0 += parseInt(mass0[i]);
+                sum1 += parseInt(mass1[i]);
+            }
+
+            document.getElementById('pmcd0').innerHTML = sum0;
+            document.getElementById('pmcd1').innerHTML = sum1;
+           
+        }
+
     </script>
 
     

@@ -29,7 +29,7 @@
             	<img src="images/templatemo_image_01.jpg" alt="image" class="img_frame" />
                 РАПОРТ старших лікарів змін Матушевської Н.І., Костюк В.С.  за чергування Дата рапорту.
 
-                <table class="table mytable">
+                <table border="1">
                     <tr>
                         <td class="firstColumn"></td>
                         <td>День</td>
