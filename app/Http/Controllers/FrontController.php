@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Report1;
 use App\Info;
+use App\Group;
 
 class FrontController extends Controller
 {
@@ -15,7 +16,34 @@ class FrontController extends Controller
      */
     public function index()
     {
-        return view('front.index');
+        $maxDate = Info::max('date');
+
+        $types = Group::where('group', 'call')->get()->first();
+        $typ = explode(";", $types->title);
+        $table0 = Report1::where('date', $maxDate)->get();
+
+        
+
+        $table1 = Info::where('id_group', '2')->where('date', $maxDate)->get()->first();
+        $tabl1 = explode(";", $table1->value);
+        $sections = Group::where('group', 'sections')->get()->first();
+        $sect = explode(";", $sections->title);
+
+        $table2 = Info::where('id_group', '3')->where('date', $maxDate)->get()->first();
+        $tabl2 = explode(";", $table2->value);
+        $gospit = Group::where('group', 'gosp')->get()->first();
+        $gosp = explode(";", $gospit->title);
+
+        $table3 = Info::where('id_group', '4')->where('date', $maxDate)->get()->first();
+        $tabl3 = explode(";", $table3->value);
+        $region = Group::where('group', 'region')->get()->first();
+        $reg = explode(";", $region->title);
+
+        $table4 = Info::where('id_group', '0')->where('date', $maxDate)->get()->first();
+        $tabl4 = explode(";", $table4->value);
+        //dd($tabl1);
+
+        return view('front.index', ['types'=>$typ, 'sections'=>$sect, 'gospit'=>$gosp, 'region'=>$reg, 'table0'=>$table0, 'table1'=>$tabl1, 'table2'=>$tabl2, 'table3'=>$tabl3, 'table4'=>$tabl4, 'date'=>$maxDate]);
     }
 
     /**
@@ -25,17 +53,19 @@ class FrontController extends Controller
      */
     public function create()
     {
-        $types = ['Прийнято викликів','Передано на невідкладну допомогу','Поради (заг. к-сть)','Передано іншим відділенням','Виконано виїздів'];
+        $types = Group::where('group', 'call')->get()->first();
+        $typ = explode(";", $types->title);
 
-        $sections = ['Липини 10', 'Рівненська 8', 'Волі 2', 'Бендел.1', 'Словацьк.6', 'Шацьк 1', 'Любомль 1', 
-            'Липини 12', 'Рівненська 9', 'Волі 3', 'Бендел.4', 'Словацьк.7', 'Шацьк 2', 'Любомль 2', 
-            'Липини 14', 'Піща', 'Волі 5', 'Бендел.11', 'Словацьк.15', 'Турійськ', 'Рожище 1', 
-            'Луків', 'Купичів', 'Головно', 'Гуща', 'Доросині', '16 (Торчин)', 'Рожище 2'];
-        
-        $region = ['м. Луцьк', 'Дит.нев.', 'Луц-ий р-н', 'Рож-ий р-н', 'Тур-ий р-н', 'Ків-ий. р-н', 'Шац-ий р-н', 'Люб-мль. р-н', 'Іван-ий. р-н', 'Горх-ий р-н.', 'Локач-ий р-н', 'В.Вол-ий р-н.', 'Нов-ий р-н', 'Ков-ий р-н.', 'Рат-ий р-н.', 'Любеш. р-н', 'Ман-ий р-н.', 'інш.'];
-        //dd($section);
-        
-        return view('report1.create', ['types'=>$types, 'sections'=>$sections, 'region'=>$region ]);       
+        $sections = Group::where('group', 'sections')->get()->first();
+        $sect = explode(";", $sections->title);
+
+        $gospit = Group::where('group', 'gosp')->get()->first();
+        $gosp = explode(";", $gospit->title);
+
+        $region = Group::where('group', 'region')->get()->first();
+        $reg = explode(";", $region->title);
+
+        return view('report1.create', ['types'=>$typ, 'sections'=>$sect, 'gospit'=>$gosp, 'region'=>$reg]);
     }
 
     /**
@@ -47,21 +77,95 @@ class FrontController extends Controller
     public function store(Request $request)
     {
         $post = $request->all();
-        //dd($post);
-        $array = ['Липини 10', 'Рівненська 8', 'Волі 2', 'Бендел.1', 'Словацьк.6', 'Шацьк 1', 'Любомль 1', 
-            'Липини 12', 'Рівненська 9', 'Волі 3', 'Бендел.4', 'Словацьк.7', 'Шацьк 2', 'Любомль 2', 
-            'Липини 14', 'Піща', 'Волі 5', 'Бендел.11', 'Словацьк.15', 'Турійськ', 'Рожище 1', 
-            'Луків', 'Купичів', 'Головно', 'Гуща', 'Доросині', '16 (Торчин)', 'Рожище 2', 'Доставлено на госпіталізацію', 'Госпіталізовано', 'Не госпіталізовано', 'Відмова від госпіталізації', 'ЕКГ (заг. к-сть)', 'м. Луцьк', 'Дит.нев.', 'Луц-ий р-н', 'Рож-ий р-н', 'Тур-ий р-н', 'Ків-ий. р-н', 'Шац-ий р-н', 'Люб-мль. р-н', 'Іван-ий. р-н', 'Горх-ий р-н.', 'Локач-ий р-н', 'В.Вол-ий р-н.', 'Нов-ий р-н', 'Ков-ий р-н.', 'Рат-ий р-н.', 'Любеш. р-н', 'Ман-ий р-н.', 'інш.', 'Екстр.', 'Неекстр.'];
-        
-        foreach ($array as $i=>$arr)
-        {
-            $info['title'] = $arr;
-            $info['value'] = $post["value$i"];
-            $info['date'] = $post["date"];
 
-            Info::create($info);           
+        //$types = Group::where('group', 'call')->get()->first();
+        //$typ = explode(";", $types->title);
+
+        $sections = Group::where('group', 'sections')->get()->first();
+        $sect = explode(";", $sections->title);
+
+        $gospit = Group::where('group', 'gosp')->get()->first();
+        $gos = explode(";", $gospit->title);
+
+        $region = Group::where('group', 'region')->get()->first();
+        $reg = explode(";", $region->title);
+
+        for ($i=0; $i < 4; $i++) 
+        { 
+            switch ($i) 
+            {
+                case 0:
+                    $info['id_group'] = $sections->id;
+                    $info['value'] = '';
+                    for ($i=1; $i <= count($sect); $i++) 
+                    {                         
+                        if ($i==count($sect)) 
+                        {
+                            $info['value'] .= $post["value$i"];
+                        }
+                        else
+                        {
+                            $info['value'] .= $post["value$i"].';';
+                        }
+                    }
+                    $info['date'] = $post["date"];
+                    Info::create($info);
+                    //break 1;
+                case 1:
+                    $info['id_group'] = $gospit->id;
+                    $info['value'] = '';
+                    for ($i=count($sect)+1; $i <= count($sect)+count($gos); $i++) 
+                    { 
+                        if ($i==count($sect)+count($gos)) 
+                        {
+                            $info['value'] .= $post["value$i"];
+                        }
+                        else
+                        {
+                            $info['value'] .= $post["value$i"].';';
+                        }
+                    }
+                    $info['date'] = $post["date"];
+                    Info::create($info);
+                    //break 1;
+                case 2:
+                    $info['id_group'] = $region->id;
+                    $info['value'] = '';
+                    for ($i=count($sect)+count($gos)+1; $i <= count($sect)+count($gos)+count($reg); $i++) 
+                    { 
+                        if ($i==count($sect)+count($gos)+count($reg)) 
+                        {
+                            $info['value'] .= $post["value$i"];
+                        }
+                        else
+                        {
+                            $info['value'] .= $post["value$i"].';';
+                        }
+                    }
+                    $info['date'] = $post["date"];
+                    Info::create($info);
+                    //break 1;
+                case 3:
+                    $info['id_group'] = 0;
+                    $info['value'] = '';
+                    for ($i=count($sect)+count($gos)+count($reg)+1; $i <= count($sect)+count($gos)+count($reg)+2; $i++) 
+                    { 
+                        if ($i==count($sect)+count($gos)+count($reg)+2) 
+                        {
+                            $info['value'] .= $post["value$i"];
+                        }
+                        else
+                        {
+                            $info['value'] .= $post["value$i"].';';
+                        }
+                    }
+                    $info['date'] = $post["date"];
+                    Info::create($info);
+                   // break 1;
+            }
+             
         }
-         //dd($sect); 
+        
 
         for ($i=0; $i < 5 ; $i++)
         {
@@ -74,8 +178,7 @@ class FrontController extends Controller
            
             Report1::create($report); 
         }
-
-         return back();
+        return back();
     }
 
     /**

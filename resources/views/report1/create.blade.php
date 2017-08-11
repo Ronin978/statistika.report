@@ -40,7 +40,7 @@
                                     </td>
                                     <td></td>
                                 </tr>
-                            @endforeach        
+                            @endforeach
                            
                         </table>
                     
@@ -62,14 +62,14 @@
                     
                         <table class="table mytable">
                             <tr>
-                                <td>Доставлено на госпіталізацію </td>
-                                <td>Госпіталізовано</td>
-                                <td>Не госпіталізовано</td>
-                                <td>Відмова від госпіталізації</td>
-                                <td>ЕКГ (заг. к-сть)</td>
+                                @foreach($gospit as $gosp)
+                                    <td>
+                                        {{$gosp}}
+                                    </td>
+                                @endforeach
                             </tr>
                             <tr>
-                                @for ($i=$key+2; $i <= 33; $i++)
+                                @for ($i=$key+2; $i <= count($sections)+count($gospit); $i++)
                                     <td>
                                         <input type="text" id="value{{$i}}" class="two" name="value{{$i}}" value="{{$i}}">
                                     </td>
@@ -83,7 +83,7 @@
                                 @foreach ($region as $key => $reg)
                                     
                                     <td>{{$reg}}<br>
-                                        <input type="text" id="value{{$key+34}}" name="value{{$key+34}}" class="two" value="1+2" oninput = "oninput2()">
+                                        <input type="text" id="value{{$key+count($sections)+count($gospit)+1}}" name="value{{$key+count($sections)+count($gospit)+1}}" class="two" value="1+2" oninput = "oninput2()">
                                     </td>
                                     @if ( ($key+1) % 9 == 0)
                                         </tr>

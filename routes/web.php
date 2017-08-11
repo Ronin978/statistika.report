@@ -17,3 +17,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/QuickFind', 'FrontController@QuickFind');
+
+
+Route::resource('/groups', 'GroupController');

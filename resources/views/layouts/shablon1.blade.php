@@ -111,6 +111,10 @@
                         <li>
                             <a href="{{action('FrontController@create')}}">Create</a>
                         </li>
+                        <li>
+                           <a href="{{action('GroupController@index')}}">Всі групи</a>
+                        </li>
+                       
                     </ul>
 
                     <!-- Right Side Of Navbar -->

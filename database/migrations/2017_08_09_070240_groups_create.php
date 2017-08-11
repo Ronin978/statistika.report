@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Info extends Migration
+class GroupsCreate extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class Info extends Migration
      */
     public function up()
     {
-        Schema::create('info', function (Blueprint $table) 
+         Schema::create('groups', function (Blueprint $table) 
         {
          $table->increments('id');
-         $table->date('date'); 
-         $table->string('id_group');
-         $table->string('value');
+         $table->string('group');
+         $table->text('title');
          $table->timestamps();
          
         });
@@ -31,6 +30,6 @@ class Info extends Migration
      */
     public function down()
     {
-         Schema::drop('info');
+         Schema::drop('groups');
     }
 }
