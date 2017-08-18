@@ -4,7 +4,7 @@
 
 <div id="templatemo_wrapper">
      
-    <form id="firstForm" method="POST" action="{{action('FrontController@store')}}">
+    <form id="firstForm" method="POST" action="{{action('ReportController@store')}}">
 
         <div id="templatmeo_menu">
             <p align="center">РАПОРТ старших лікарів змін <input type="text" name="chergovy"> за чергування 
@@ -102,12 +102,11 @@
                     <input type="submit" value="Save">
                 
                 </div> 
-                    <a href="#templatemo_header" class="gototop">Go To Top</a>
+                    
+                    <a href="{{action('ReportController@create2')}}" class="gotonext">Next</a>
                 <div class="cleaner"></div>
             </div> 
-            <div class="cleaner"></div>
-                <a href="#templatemo_header" class="gototop">Go To Top</a>
-            <div class="cleaner"></div>
+            
 
         </div> 
 

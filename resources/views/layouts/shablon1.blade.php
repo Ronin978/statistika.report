@@ -39,13 +39,6 @@
     </script> 
 
     <script type="text/javascript">
-        function oninputt(key){            
-            var intro = parseFloat( document.getElementById('intro'+key).value );
-            var prihod = parseFloat( document.getElementById('prihod'+key).value );
-            var vykor = parseFloat( document.getElementById('vykor'+key).value );
-            document.getElementById('result'+key).value = all+prihod-vykor;
-        }
-        
         function oninput2()
         {
             var mass0 = [];
@@ -54,7 +47,6 @@
             var two = 0;
             for (var i = 34; i <= 51; i++) {
                 var example = document.getElementById('value'+i).value.split('+');
-                
                 
                 if (example[0]!=='') {
                     first = example[0];
@@ -78,7 +70,6 @@
 
             document.getElementById('pmcd0').innerHTML = sum0;
             document.getElementById('pmcd1').innerHTML = sum1;
-           
         }
 
     </script>
@@ -109,12 +100,11 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="{{action('FrontController@create')}}">Create</a>
+                            <a href="{{action('ReportController@create1')}}">Create</a>
                         </li>
                         <li>
                            <a href="{{action('GroupController@index')}}">Всі групи</a>
-                        </li>
-                       
+                        </li>                       
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -150,6 +140,7 @@
         </nav>
 
         @yield('content')
+
     </div>
 
     <!-- Scripts -->

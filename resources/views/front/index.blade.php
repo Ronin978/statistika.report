@@ -56,7 +56,6 @@
                                     </td>
                                 </tr>
                             @endforeach
-                           
                         </table>
                     
                         <table id="myTable" class="table mytable" >
@@ -140,7 +139,6 @@
             <a href="#templatemo_header" class="gototop">Go To Top</a>
             <div class="cleaner"></div>
 		</div> <!-- END of home -->
-        
         
             <div class="cleaner"></div>
             <a href="#templatemo_header" class="gototop">Go To Top</a>

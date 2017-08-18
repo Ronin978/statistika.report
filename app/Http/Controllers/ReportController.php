@@ -7,49 +7,9 @@ use App\Report1;
 use App\Info;
 use App\Group;
 
-class FrontController extends Controller
+class ReportController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $maxDate = Info::max('date');
-
-        $types = Group::where('group', 'call')->get()->first();
-        $typ = explode(";", $types->title);
-        $table0 = Report1::where('date', $maxDate)->get();
-
-        
-        $table1 = Info::where('id_group', '4')->where('date', $maxDate)->get()->first();
-        $tabl1 = explode(";", $table1->value);
-        $sections = Group::where('group', 'sections')->get()->first();
-        $sect = explode(";", $sections->title);
-
-        $table2 = Info::where('id_group', '2')->where('date', $maxDate)->get()->first();
-        $tabl2 = explode(";", $table2->value);
-        $gospit = Group::where('group', 'gosp')->get()->first();
-        $gosp = explode(";", $gospit->title);
-
-        $table3 = Info::where('id_group', '3')->where('date', $maxDate)->get()->first();
-        $tabl3 = explode(";", $table3->value);
-        $region = Group::where('group', 'region')->get()->first();
-        $reg = explode(";", $region->title);
-
-        $table4 = Info::where('id_group', '0')->where('date', $maxDate)->get()->first();
-        $tabl4 = explode(";", $table4->value);
-        
-        return view('front.index', ['types'=>$typ, 'sections'=>$sect, 'gospit'=>$gosp, 'region'=>$reg, 'table0'=>$table0, 'table1'=>$tabl1, 'table2'=>$tabl2, 'table3'=>$tabl3, 'table4'=>$tabl4, 'date'=>$maxDate]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function create1()
     {
         $types = Group::where('group', 'call')->get()->first();
         $typ = explode(";", $types->title);
@@ -66,18 +26,24 @@ class FrontController extends Controller
         return view('report.create1', ['types'=>$typ, 'sections'=>$sect, 'gospit'=>$gosp, 'region'=>$reg]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function create2()
+    {
+        return view('report.create2');
+    }
+
+    public function create3()
+    {
+        return view('report.create3');
+    }
+
+    public function create4()
+    {
+        return view('report.create4');
+    }
+
     public function store(Request $request)
     {
         $post = $request->all();
-
-        //$types = Group::where('group', 'call')->get()->first();
-        //$typ = explode(";", $types->title);
 
         $sections = Group::where('group', 'sections')->get()->first();
         $sect = explode(";", $sections->title);
@@ -179,53 +145,24 @@ class FrontController extends Controller
         return back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function storea(Request $request)
     {
-        //
+    	//
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function storeb(Request $request)
     {
-        //
+    	//
+    }
+	
+	public function storec(Request $request)
+    {
+    	//
+    }
+	
+	public function stored(Request $request)
+    {
+    	//
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
-    public function QuickFind(Request $request)
-    {
-        //
-    }
 }
