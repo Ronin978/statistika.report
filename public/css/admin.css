@@ -14,9 +14,30 @@
 }
 
 #myTable input{
-	width: 5em;
+	width: 100%;
 }
 
 .firstColumn {
 	text-align: left;	
+}
+
+.rotate {
+	-webkit-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+	-o-transform: rotate(-90deg);
+	-ms-transform: rotate(-90deg);
+	transform: rotate(-90deg);
+
+	vertical-align: middle;
+
+	padding: 10px;
+	margin: 10px;
+}
+
+#twoTable {
+	text-align: center;
+}
+
+#twoTable input {
+	width: 100%;
 }

@@ -4,7 +4,7 @@
 
 <div id="templatemo_wrapper">
      
-    <form id="firstForm" method="POST" action="{{action('ReportController@stored')}}">
+    <form id="firstForm" method="POST" action="{{action('ReportController@store4')}}">
 
         <div id="templatmeo_menu">
             <p align="center">Інформація по запізненнях бригад на виклики за Date</p>

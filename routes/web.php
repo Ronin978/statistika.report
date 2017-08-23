@@ -23,11 +23,10 @@ Route::get('/report/create2', 'ReportController@create2');
 Route::get('/report/create3', 'ReportController@create3');
 Route::get('/report/create4', 'ReportController@create4');
 
-Route::post('/report', 'ReportController@store');
-Route::post('/report', 'ReportController@storea');
-Route::post('/report', 'ReportController@storeb');
-Route::post('/report', 'ReportController@storec');
-Route::post('/report', 'ReportController@stored');
+Route::post('/report/store1', 'ReportController@store1');
+Route::post('/report/store2', 'ReportController@store2');
+Route::post('/report/store3', 'ReportController@store3');
+Route::post('/report/store4', 'ReportController@store4');
 
 
 Route::resource('/groups', 'GroupController');

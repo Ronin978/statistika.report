@@ -4,7 +4,7 @@
 
 <div id="templatemo_wrapper">
      
-    <form id="firstForm" method="POST" action="{{action('ReportController@store')}}">
+    <form id="firstForm" method="POST" action="{{action('ReportController@store1')}}">
 
         <div id="templatmeo_menu">
             <p align="center">РАПОРТ старших лікарів змін <input type="text" name="chergovy"> за чергування 
@@ -13,7 +13,7 @@
         <div id="templatemo_main">
     	   <div id="home" class="main_box">
         	   <div class="col col-my">
-                    Дата: <input type="date" name="date" value="{{date('Y-m-d')}}"> 
+                    Дата: <input id="firstdate" type="date" name="date" value="{{date('Y-m-d')}}"> 
                     <br><br>
 
                     Екстр. - <input type="text" id="extr" name="value_i">
@@ -100,10 +100,15 @@
                     </div>
 
                     <input type="submit" value="Save">
-                
+    </form>
                 </div> 
                     
-                    <a href="{{action('ReportController@create2')}}" class="gotonext">Next</a>
+                   <form id="twoform" method="GET" action="{{action('ReportController@create2')}}">
+                        <input id="toDate" type="hidden" name="date" value="">
+
+                        <div onclick="document.getElementById('toDate').value = document.getElementById('firstdate').value; document.getElementById('twoform').submit();" class="gotonext">Next</div>
+                    </form>
+
                 <div class="cleaner"></div>
             </div> 
             
@@ -113,7 +118,7 @@
         <div id="templatemo_footer">
             Copyright © 2048 Your Company Name<br /> Designed by <a href="http://www.templatemo.com" target="_parent">Free CSS Templates</a>
         </div> 
-    </form>
+    
 
 
 </div>

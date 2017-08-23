@@ -26,9 +26,12 @@ class ReportController extends Controller
         return view('report.create1', ['types'=>$typ, 'sections'=>$sect, 'gospit'=>$gosp, 'region'=>$reg]);
     }
 
-    public function create2()
+    public function create2(Request $request)
     {
-        return view('report.create2');
+        $post = $request->all();
+        $date = $post['date'];
+        //dd($post['date']);
+        return view('report.create2', ['date'=>$date]);
     }
 
     public function create3()
@@ -142,25 +145,25 @@ class ReportController extends Controller
            
             Report1::create($report); 
         }
-        return back();
+        return view('report.create2', ['date'=>$post['date']]);
     }
 
-    public function storea(Request $request)
+    public function store1(Request $request)
     {
     	//
     }
 
-    public function storeb(Request $request)
+    public function store2(Request $request)
     {
     	//
     }
 	
-	public function storec(Request $request)
+	public function store3(Request $request)
     {
     	//
     }
 	
-	public function stored(Request $request)
+	public function store4(Request $request)
     {
     	//
     }

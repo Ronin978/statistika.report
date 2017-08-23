@@ -23,8 +23,8 @@ class ToLate extends Migration
          $table->string('brig');
          $table->string('time');
          $table->string('support');
-         $table->string('detali');
-         $table->string('diagnoz');
+         $table->string('cause');
+         $table->string('call');
          $table->timestamps();
          
         });

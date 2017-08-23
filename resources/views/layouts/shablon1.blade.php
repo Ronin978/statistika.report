@@ -72,6 +72,69 @@
             document.getElementById('pmcd1').innerHTML = sum1;
         }
 
+        function AddLine()
+        {
+            var table = document.getElementById("twoTable"); 
+            var row = table.insertRow(table.rows.length); // Добавляем строку
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+            var cell7 = row.insertCell(6);
+            var cell8 = row.insertCell(7);
+            var cell9 = row.insertCell(8);
+
+             // Формируем строку элементов управления
+            var index = (table.rows.length-2);
+
+            var text1 = document.createElement("p"); // Ввод text1
+            text1.innerHTML= index+1;
+            cell1.appendChild(text1);
+
+            var text2 = document.createElement("input"); // Ввод text2
+            text2.setAttribute("type", "text");
+            text2.setAttribute("name", 'punkt'+index);
+            cell2.appendChild(text2);
+
+            var text3 = document.createElement("input"); // Ввод text3
+            text3.setAttribute("type", "text");
+            text3.setAttribute("name", 'no_card'+index);
+            cell3.appendChild(text3);
+
+            var text4 = document.createElement("input"); // Ввод text4
+            text4.setAttribute("type", "text");
+            text4.setAttribute("name", 'adress'+index);
+            cell4.appendChild(text4);
+
+            var text5 = document.createElement("input"); // Ввод text5
+            text5.setAttribute("type", "text");
+            text5.setAttribute("name", 'brig'+index);
+            cell5.appendChild(text5);
+
+            var text6 = document.createElement("input"); // Ввод text6
+            text6.setAttribute("type", "text");
+            text6.setAttribute("name", 'time'+index);
+            cell6.appendChild(text6);
+
+            var text7 = document.createElement("input"); // Ввод text7
+            text7.setAttribute("type", "text");
+            text7.setAttribute("name", 'support'+index);
+            cell7.appendChild(text7);
+
+            var text8 = document.createElement("input"); // Ввод text8
+            text8.setAttribute("type", "text");
+            text8.setAttribute("name", 'cause'+index);
+            cell8.appendChild(text8);
+
+            var text9 = document.createElement("input"); // Ввод text9
+            text9.setAttribute("type", "text");
+            text9.setAttribute("name", 'call'+index);
+            cell9.appendChild(text9);
+
+        }
+
     </script>
 
     
