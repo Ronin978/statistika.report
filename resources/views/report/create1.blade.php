@@ -2,6 +2,8 @@
 
 @section('content')
 
+@include('flash::message')
+
 <div id="templatemo_wrapper">
      
     <form id="firstForm" method="POST" action="{{action('ReportController@store1')}}">

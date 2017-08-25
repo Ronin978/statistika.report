@@ -2,12 +2,15 @@
 
 @section('content')
 
+@include('flash::message')
+
 <div id="templatemo_wrapper">
      
     <form id="firstForm" method="POST" action="{{action('ReportController@store2')}}">
 
         <div id="templatmeo_menu">
             <p align="center">Інформація по запізненнях бригад на виклики за {{$date}}</p>
+            <input id="date" type="hidden" name="date" value="{{$date}}">
         </div>
         <div id="templatemo_main">
     	   <div id="home" class="main_box">
@@ -31,34 +34,34 @@
                                     1
                                 </td>
                                 <td>
-                                    <input type="text" name="punkt">
+                                    <input type="text" name="punkt0">
                                 </td>
                                 <td>
-                                    <input type="text" name="no_card">
+                                    <input type="text" name="no_card0">
                                 </td>
                                 <td>
-                                    <input type="text" name="adress">
+                                    <input type="text" name="adress0">
                                 </td>
                                 <td>
-                                    <input type="text" name="brig">
+                                    <input type="text" name="brig0">
                                 </td>
                                 <td>
-                                    <input type="text" name="time">
+                                    <input type="text" name="time0">
                                 </td>
                                 <td>
-                                    <input type="text" name="support">
+                                    <input type="text" name="support0">
                                 </td>
                                 <td>
-                                    <input type="text" name="cause">
+                                    <input type="text" name="cause0">
                                 </td>
                                 <td>
-                                    <input type="text" name="call">
+                                    <input type="text" name="call0">
                                 </td>
                             </tr>                           
                                                 
                         </table>
 
-                        <button type="button" onclick="AddLine()" >Додати стрічку</button>
+                        <button type="button" onclick="AddLine2()" >Додати стрічку</button>
                     
                         <input type="hidden" name="_token" value="{{csrf_token()}}"/>
 
@@ -66,15 +69,21 @@
                     </div>
 
                     <input type="submit" value="Save">
-                
+      </form>            
                 </div> 
                     <div class="cleaner"></div>
-                    <div class="gotoback">
-                        <p>Back</p>
-                        
-                    </div>
+                    
 
-                    <div onclick="document.getElementById('toDate').value = document.getElementById('firstdate').value; document.getElementById('twoform').submit();" class="gotonext"><p>Next</p></div>
+                    <form id="twoform" method="GET" action="{{action('ReportController@create3')}}">
+                        <input id="toDate" type="hidden" name="date" value="">
+                        <div class="gotoback" onclick="window.history.go(-1); return false;">
+                            <p>Back</p>                        
+                        </div>
+
+                        <div onclick="document.getElementById('toDate').value = document.getElementById('date').value; document.getElementById('twoform').submit();" class="gotonext"><p>Next</p></div>
+                    </form>
+
+                    
 
                     
                     
@@ -87,7 +96,7 @@
         <div id="templatemo_footer">
             Copyright © 2048 Your Company Name<br /> Designed by <a href="http://www.templatemo.com" target="_parent">Free CSS Templates</a>
         </div> 
-    </form>
+  
 
 
 </div>

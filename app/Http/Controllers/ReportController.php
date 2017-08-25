@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Report1;
 use App\Info;
 use App\Group;
+use App\Report1;
+use App\Report2;
+use App\Report3;
+use App\Report4;
 
 class ReportController extends Controller
 {
@@ -28,15 +31,16 @@ class ReportController extends Controller
 
     public function create2(Request $request)
     {
-        $post = $request->all();
-        $date = $post['date'];
+        
+        $date = ($request->all())['date'];
         //dd($post['date']);
         return view('report.create2', ['date'=>$date]);
     }
 
-    public function create3()
+    public function create3(Request $request)
     {
-        return view('report.create3');
+        $date = ($request->all())['date'];
+        return view('report.create3', ['date'=>$date]);
     }
 
     public function create4()
@@ -44,7 +48,7 @@ class ReportController extends Controller
         return view('report.create4');
     }
 
-    public function store(Request $request)
+    public function store1(Request $request)
     {
         $post = $request->all();
 
@@ -148,14 +152,26 @@ class ReportController extends Controller
         return view('report.create2', ['date'=>$post['date']]);
     }
 
-    public function store1(Request $request)
-    {
-    	//
-    }
-
     public function store2(Request $request)
     {
-    	//
+        $post = $request->all();
+        $date = $post['date'];
+        for ($i=0; $i < (count($post)-2)/8 ; $i++) 
+            {                
+                $report2['date'] = $date;  
+                $report2['punkt'] = $post["punkt$i"];  
+                $report2['no_card'] = $post["no_card$i"];  
+                $report2['adress'] = $post["adress$i"];  
+                $report2['brig'] = $post["brig$i"];
+                $report2['time'] = $post["time$i"];
+                $report2['support'] = $post["support$i"];
+                $report2['cause'] = $post["cause$i"];
+                $report2['call'] = $post["call$i"];
+                                     
+                Report2::create($report2);
+            }
+        flash('Дані внесені.');
+        return view('report.create3', ['date'=>$date]);
     }
 	
 	public function store3(Request $request)
