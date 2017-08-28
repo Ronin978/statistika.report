@@ -9,6 +9,8 @@ use App\Report1;
 use App\Report2;
 use App\Report3;
 use App\Report4;
+use App\Report5;
+use App\Report6;
 
 class ReportController extends Controller
 {
@@ -43,9 +45,28 @@ class ReportController extends Controller
         return view('report.create3', ['date'=>$date]);
     }
 
-    public function create4()
+    public function create4(Request $request)
     {
-        return view('report.create4');
+        $date = ($request->all())['date'];
+        return view('report.create4', ['date'=>$date]);
+    }
+
+    public function create5(Request $request)
+    {
+        $date = ($request->all())['date'];
+        return view('report.create5', ['date'=>$date]);
+    }
+
+    public function create6(Request $request)
+    {
+        $date = ($request->all())['date'];
+        return view('report.create6', ['date'=>$date]);
+    }
+
+    public function create7(Request $request)
+    {
+        $date = ($request->all())['date'];
+        return view('report.create7', ['date'=>$date]);
     }
 
     public function store1(Request $request)
@@ -158,17 +179,17 @@ class ReportController extends Controller
         $date = $post['date'];
         for ($i=0; $i < (count($post)-2)/8 ; $i++) 
             {                
-                $report2['date'] = $date;  
-                $report2['punkt'] = $post["punkt$i"];  
-                $report2['no_card'] = $post["no_card$i"];  
-                $report2['adress'] = $post["adress$i"];  
-                $report2['brig'] = $post["brig$i"];
-                $report2['time'] = $post["time$i"];
-                $report2['support'] = $post["support$i"];
-                $report2['cause'] = $post["cause$i"];
-                $report2['call'] = $post["call$i"];
+                $report['date'] = $date;  
+                $report['punkt'] = $post["punkt$i"];  
+                $report['no_card'] = $post["no_card$i"];  
+                $report['adress'] = $post["adress$i"];  
+                $report['brig'] = $post["brig$i"];
+                $report['time'] = $post["time$i"];
+                $report['support'] = $post["support$i"];
+                $report['cause'] = $post["cause$i"];
+                $report['call'] = $post["call$i"];
                                      
-                Report2::create($report2);
+                Report2::create($report);
             }
         flash('Дані внесені.');
         return view('report.create3', ['date'=>$date]);
@@ -176,12 +197,97 @@ class ReportController extends Controller
 	
 	public function store3(Request $request)
     {
-    	//
+    	$post = $request->all();
+        $date = $post['date'];
+        for ($i=0; $i < (count($post)-2)/10 ; $i++) 
+            {                
+                $report['date'] = $post["date$i"];  
+                $report['no_card'] = $post["no_card$i"];  
+                $report['pib'] = $post["pib$i"];  
+                $report['at'] = $post["at$i"];  
+                $report['from'] = $post["from$i"];
+                $report['direct'] = $post["direct$i"];
+                $report['who_direct'] = $post["who_direct$i"];
+                $report['diagnoz'] = $post["diagnoz$i"];
+                $report['brig'] = $post["brig$i"];
+                $report['other'] = $post["other$i"];
+                                     
+                Report3::create($report);
+            }
+        flash('Дані внесені.');
+        return view('report.create4', ['date'=>$date]);
     }
 	
 	public function store4(Request $request)
     {
-    	//
+    	$post = $request->all();
+       // dd($post);
+        $date = $post['date'];
+        for ($i=0; $i < (count($post)-2)/11 ; $i++) 
+            {                
+                $report['date'] = $post["date$i"];  
+                $report['no_card'] = $post["no_card$i"];  
+                $report['adress'] = $post["adress$i"];  
+                $report['pib'] = $post["pib$i"];  
+                $report['age'] = $post["age$i"];  
+                $report['diagnoz'] = $post["diagnoz$i"];
+                $report['brig'] = $post["brig$i"];
+                $report['tromb'] = $post["tromb$i"];
+                $report['stent'] = $post["stent$i"];
+                $report['gospital'] = $post["gospital$i"];
+                $report['support'] = $post["support$i"];
+                                     
+                Report4::create($report);
+            }
+        flash('Дані внесені.');
+        return view('report.create5', ['date'=>$date]);
+    }
+
+    public function store5(Request $request)
+    {
+        $post = $request->all();
+        //dd($post);
+        $date = $post['date'];
+        for ($i=0; $i < (count($post)-3)/8 ; $i++) 
+            {                
+                $report['pidtype'] = $post["pidtype"];  
+                $report['date'] = $post["date$i"];  
+                $report['title'] = $post["title$i"];  
+                $report['adress'] = $post["adress$i"];  
+                $report['pib'] = $post["pib$i"];  
+                $report['no_card'] = $post["no_card$i"]; 
+                $report['brig'] = $post["brig$i"];
+                $report['other'] = $post["other$i"];
+                                     
+                Report5::create($report);
+            }
+        flash('Дані внесені.');
+        return view('report.create6', ['date'=>$date]);
+    }
+
+    public function store6(Request $request)
+    {
+        $post = $request->all();
+       // dd($post);
+        $date = $post['date'];
+        for ($i=0; $i < (count($post)-2)/11 ; $i++) 
+            {                
+                $report['date'] = $post["date$i"];  
+                $report['no_card'] = $post["no_card$i"];  
+                $report['adress'] = $post["adress$i"];  
+                $report['pib'] = $post["pib$i"];  
+                $report['age'] = $post["age$i"];  
+                $report['diagnoz'] = $post["diagnoz$i"];
+                $report['brig'] = $post["brig$i"];
+                $report['tromb'] = $post["tromb$i"];
+                $report['stent'] = $post["stent$i"];
+                $report['gospital'] = $post["gospital$i"];
+                $report['support'] = $post["support$i"];
+                                     
+                Report4::create($report);
+            }
+        flash('Дані внесені.');
+        return view('report.create7', ['date'=>$date]);
     }
 
 }

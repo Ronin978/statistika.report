@@ -78,3 +78,51 @@ function AddLine3()
         cell.appendChild(text);
     }
 }
+
+function AddLine4()
+{
+    var table = document.getElementById("table4"); 
+    var row = table.insertRow(table.rows.length); // Добавляем строку
+
+     // Формируем строку элементов управления
+    var index = (table.rows.length-2);
+    var cell1 = row.insertCell(0);
+    var text1 = document.createElement("p"); // Ввод text1
+    text1.innerHTML= index+1;
+    cell1.appendChild(text1);
+
+    var arr = ["date", "no_card", "adress", "pib", "age", 
+    "diagnoz", "brig", "tromb", "stent", "gospital", "support"]
+
+    for (var i = 0; i <= arr.length - 1;  i++) {
+        var cell = row.insertCell(i+1);
+        var text = document.createElement("input"); // Ввод text2
+        text.setAttribute("type", "text");
+        text.setAttribute("name", arr[i]+index);
+        cell.appendChild(text);
+    }
+}
+
+function AddLine5()
+{
+    var table = document.getElementById("twoTable"); 
+    var row = table.insertRow(table.rows.length); // Добавляем строку
+
+     // Формируем строку элементов управления
+    var index = (table.rows.length-2);
+    var cell1 = row.insertCell(0);
+    var text1 = document.createElement("p"); // Ввод text1
+    text1.innerHTML= index+1;
+    cell1.appendChild(text1);
+
+    var arr = ["date", "title", "adress", "pib", "no_card",
+    "brig", "other"]
+
+    for (var i = 0; i <= arr.length - 1;  i++) {
+        var cell = row.insertCell(i+1);
+        var text = document.createElement("input"); // Ввод text2
+        text.setAttribute("type", "text");
+        text.setAttribute("name", arr[i]+index);
+        cell.appendChild(text);
+    }
+}
