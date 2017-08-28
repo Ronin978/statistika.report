@@ -25,6 +25,10 @@ Route::get('/report/create4', 'ReportController@create4');
 Route::get('/report/create5', 'ReportController@create5');
 Route::get('/report/create6', 'ReportController@create6');
 Route::get('/report/create7', 'ReportController@create7');
+Route::get('/report/create8', 'ReportController@create8');
+Route::get('/report/create9', 'ReportController@create9');
+Route::get('/report/create10', 'ReportController@create10');
+Route::get('/report/create11', 'ReportController@create11');
 
 Route::post('/report/store1', 'ReportController@store1');
 Route::post('/report/store2', 'ReportController@store2');

@@ -69,6 +69,31 @@ class ReportController extends Controller
         return view('report.create7', ['date'=>$date]);
     }
 
+    public function create8(Request $request)
+    {
+        $date = ($request->all())['date'];
+        return view('report.create8', ['date'=>$date]);
+    }
+
+    public function create9(Request $request)
+    {
+        $date = ($request->all())['date'];
+        return view('report.create9', ['date'=>$date]);
+    }
+
+    public function create10(Request $request)
+    {
+        $date = ($request->all())['date'];
+        return view('report.create10', ['date'=>$date]);
+    }
+
+    public function create11(Request $request)
+    {
+        $date = ($request->all())['date'];
+        return view('report.create11', ['date'=>$date]);
+    }
+
+
     public function store1(Request $request)
     {
         $post = $request->all();
@@ -170,7 +195,8 @@ class ReportController extends Controller
            
             Report1::create($report); 
         }
-        return view('report.create2', ['date'=>$post['date']]);
+        return redirect()->action('ReportController@create2', 
+            ['date'=>$post['date']]);
     }
 
     public function store2(Request $request)
@@ -192,7 +218,8 @@ class ReportController extends Controller
                 Report2::create($report);
             }
         flash('Дані внесені.');
-        return view('report.create3', ['date'=>$date]);
+        return redirect()->action('ReportController@create3', 
+            ['date'=>$post['date']]);
     }
 	
 	public function store3(Request $request)
@@ -215,7 +242,8 @@ class ReportController extends Controller
                 Report3::create($report);
             }
         flash('Дані внесені.');
-        return view('report.create4', ['date'=>$date]);
+        return redirect()->action('ReportController@create4', 
+            ['date'=>$post['date']]);
     }
 	
 	public function store4(Request $request)
@@ -240,7 +268,8 @@ class ReportController extends Controller
                 Report4::create($report);
             }
         flash('Дані внесені.');
-        return view('report.create5', ['date'=>$date]);
+        return redirect()->action('ReportController@create5', 
+            ['date'=>$post['date']]);
     }
 
     public function store5(Request $request)
@@ -262,7 +291,32 @@ class ReportController extends Controller
                 Report5::create($report);
             }
         flash('Дані внесені.');
-        return view('report.create6', ['date'=>$date]);
+        
+        if ($report['pidtype'] == 'fatal') 
+        {
+            return redirect()->action('ReportController@create6', ['date'=>$post['date']]);
+        }
+        elseif ($report['pidtype'] == 'dtp+ns') 
+        {
+            return redirect()->action('ReportController@create7', ['date'=>$post['date']]);
+        }
+        elseif ($report['pidtype'] == 'high_travmy') 
+        {
+            return redirect()->action('ReportController@create8', ['date'=>$post['date']]);
+        }
+        elseif ($report['pidtype'] == 'tr_kytyzi') 
+        {
+            return redirect()->action('ReportController@create9', ['date'=>$post['date']]);
+        }
+        elseif ($report['pidtype'] == 'opic') 
+        {
+            return redirect()->action('ReportController@create10', ['date'=>$post['date']]);
+        }
+        elseif ($report['pidtype'] == 'travmat') 
+        {
+            return redirect()->action('ReportController@create11', ['date'=>$post['date']]);
+        }
+           
     }
 
     public function store6(Request $request)
@@ -274,20 +328,14 @@ class ReportController extends Controller
             {                
                 $report['date'] = $post["date$i"];  
                 $report['no_card'] = $post["no_card$i"];  
-                $report['adress'] = $post["adress$i"];  
-                $report['pib'] = $post["pib$i"];  
-                $report['age'] = $post["age$i"];  
-                $report['diagnoz'] = $post["diagnoz$i"];
-                $report['brig'] = $post["brig$i"];
-                $report['tromb'] = $post["tromb$i"];
-                $report['stent'] = $post["stent$i"];
-                $report['gospital'] = $post["gospital$i"];
-                $report['support'] = $post["support$i"];
+                $report['subdiv'] = $post["subdiv$i"];  
+                $report['other'] = $post["other$i"];  
+               
                                      
-                Report4::create($report);
+                Report6::create($report);
             }
         flash('Дані внесені.');
-        return view('report.create7', ['date'=>$date]);
+        return redirect()->action('FrontController@index');
     }
 
 }

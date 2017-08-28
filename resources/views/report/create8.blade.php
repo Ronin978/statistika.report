@@ -9,8 +9,8 @@
     <form id="firstForm" method="POST" action="{{action('ReportController@store5')}}">
 
         <div id="templatmeo_menu">
-            <p align="center">ДТП і «НС» (надзвичайні стани)  {{$date}}</p>
-            <input type="hidden" name="pidtype" value="dtp+ns">
+            <p align="center">Травми китиці   {{$date}}</p>
+            <input type="hidden" name="pidtype" value="tr_kytyzi">
             <input id="date" type="hidden" name="date" value="{{$date}}">
         </div>
         <div id="templatemo_main">
@@ -69,7 +69,7 @@
         </form>        
                 </div> 
                     <div class="cleaner"></div>
-                    <form id="twoform" method="GET" action="{{action('ReportController@create7')}}">
+                    <form id="twoform" method="GET" action="{{action('ReportController@create9')}}">
                         <input id="toDate" type="hidden" name="date" value="">
                         <div class="gotoback" onclick="window.history.go(-1); return false;">
                             <p>Back</p>                        
